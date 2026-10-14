@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $stmt = db()->prepare('SELECT id, name, username, password, role FROM users WHERE username = ? LIMIT 1');
         $stmt->execute([$username]);
-        $user = $stmt->fetch();
+        $user = $stmt->fetch();   
 
         // password_verify compares against the stored bcrypt hash.
         if ($user && password_verify($password, $user['password'])) {
