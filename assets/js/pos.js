@@ -23,6 +23,7 @@
     var discountTyp = document.getElementById('discountType');
     var checkoutBtn = document.getElementById('checkoutBtn');
     var messageEl   = document.getElementById('posMessage');
+    var cartCountEl = document.getElementById('cartCount');
 
     var cart = [];          // [{id, name, sku, price, stock, qty}]
     var searchTimer = null;
@@ -95,6 +96,7 @@
 
     function renderCart() {
         cartBody.innerHTML = '';
+        cartCountEl.textContent = cart.reduce(function (sum, l) { return sum + l.qty; }, 0);
         if (!cart.length) {
             cartBody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">Cart is empty. Search and click a product to add it.</td></tr>';
         }
